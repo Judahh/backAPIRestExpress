@@ -1,8 +1,8 @@
-# Back
+# backAPIRestExpress
 
-![Publish](https://github.com/Judahh/back/workflows/Publish/badge.svg)
-[![npm version](https://badge.fury.io/js/@flexiblepersistence/back.svg)](https://badge.fury.io/js/@flexiblepersistence/back)
-[![npm downloads](https://img.shields.io/npm/dt/@flexiblepersistence/back.svg)](https://img.shields.io/npm/dt/@flexiblepersistence/back.svg)
+![Publish](https://github.com/Judahh/backAPIRestExpress/workflows/Publish/badge.svg)
+[![npm version](https://badge.fury.io/js/%40backapirest%2Fexpress.svg)](https://badge.fury.io/js/%40backapirest%2Fexpress)
+[![npm downloads](https://img.shields.io/npm/dt/%40backapirest%2Fexpress.svg)](https://img.shields.io/npm/dt/%40backapirest%2Fexpress.svg)
 
 A simple API framework using Flexible Persistence
 
@@ -54,13 +54,13 @@ Installation is done using the
 or [`yarn add` command](https://classic.yarnpkg.com/en/docs/cli/add):
 
 ```bash
-$ npm install @flexiblepersistence/back
+$ npm install @backapirest/express
 ```
 
 or
 
 ```bash
-$ yarn add @flexiblepersistence/back
+$ yarn add @backapirest/express
 ```
 
 ## Tests
@@ -84,6 +84,6 @@ $ yarn test
 
 ## People
 
-The original author of Back is [Judah Lima](https://github.com/Judahh)
+The original author of backAPIRestExpress is [Judah Lima](https://github.com/Judahh)
 
-[List of all contributors](https://github.com/Judahh/back/graphs/contributors)
+[List of all contributors](https://github.com/Judahh/backAPIRestExpress/graphs/contributors)
