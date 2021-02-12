@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { ServiceHandler } from '@flexiblepersistence/service';
-import { Pool, SequelizeDB, Utils } from '../../source/index';
 
 import DBHandler from './sequelizeHandler';
 import TestController from './testController';
@@ -8,6 +7,8 @@ import { Test } from './test.class';
 import { mockResponse } from './response.mock';
 
 import { Request, Response } from 'express';
+import { SequelizeDB, Utils } from '@flexiblepersistence/sequelize';
+import { Pool } from 'backapirest';
 
 test('store test, update, select all, select by id test and delete it', async (done) => {
   const pool = new Pool(
