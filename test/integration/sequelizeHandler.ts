@@ -3,17 +3,15 @@
 // file deepcode ignore no-any: any needed
 // file deepcode ignore object-literal-shorthand: argh
 import { Handler, MongoDB, PersistenceInfo } from 'flexiblepersistence';
-import {
-  Journaly,
-  SubjectObserver,
-  DatabaseHandler,
-  SequelizeDB,
-} from 'backapirest';
+import { Journaly, SubjectObserver, DatabaseHandler } from 'backapirest';
 import TestService from './testService';
 import { eventInfo, readInfo } from './databaseInfos';
 import { ServiceHandler } from '@flexiblepersistence/service';
 import TestModel from './testModel';
-import { SequelizePersistenceInfo } from '@flexiblepersistence/sequelize';
+import {
+  SequelizePersistenceInfo,
+  SequelizeDB,
+} from '@flexiblepersistence/sequelize';
 
 class DBHandler extends DatabaseHandler {
   // async migrate(): Promise<boolean> {

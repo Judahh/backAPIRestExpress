@@ -1,5 +1,4 @@
 import express from 'express';
-import cors from 'cors';
 
 import RouterSingleton from './router/routerSingleton';
 import { DatabaseHandler, DatabaseHandlerInitializer } from 'backapirest';
@@ -18,7 +17,6 @@ export default class SimpleApp {
 
   protected middlewares(): void {
     this.express.use(express.json());
-    this.express.use(cors());
   }
 
   protected routes(initDefault?: DatabaseHandlerInitializer): void {
