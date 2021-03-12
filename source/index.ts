@@ -1,6 +1,5 @@
 import {
   DatabaseHandler,
-  Journaly,
   BasicService,
   BaseController,
   BaseControllerDefault,
@@ -14,22 +13,9 @@ import {
   BaseControllerHead,
   BaseControllerTrace,
   BaseControllerOptions,
-  Handler,
-  Event,
-  Operation,
-  Write,
-  Read,
-  PersistenceInfo,
-  MongoDB,
-  SubjectObserver,
-  SubjectObserverWithMemory,
-  PublisherSubscriber,
-  PublisherSubscriberWithMemory,
   Mixin,
-  Pool,
   RouterInitializer,
   DatabaseHandlerInitializer,
-  PersistenceAdapter,
 } from 'backapirest';
 
 import SimpleApp from './simpleApp';
@@ -38,7 +24,6 @@ import RouterSingleton from './router/routerSingleton';
 export {
   SimpleApp,
   DatabaseHandler,
-  Journaly,
   BasicService,
   BaseController,
   BaseControllerDefault,
@@ -53,22 +38,6 @@ export {
   BaseControllerTrace,
   BaseControllerOptions,
   RouterSingleton,
-  Handler,
-  Event,
-  Operation,
-  Write,
-  Read,
-  PersistenceInfo,
-  MongoDB,
-  SubjectObserver,
-  SubjectObserverWithMemory,
-  PublisherSubscriber,
-  PublisherSubscriberWithMemory,
   Mixin,
-  Pool,
 };
-export type {
-  RouterInitializer,
-  DatabaseHandlerInitializer,
-  PersistenceAdapter,
-};
+export type { RouterInitializer, DatabaseHandlerInitializer };
