@@ -8,7 +8,7 @@ import { mockResponse } from './response.mock';
 
 import { Request, Response } from 'express';
 import { SequelizeDB, Utils } from '@flexiblepersistence/sequelize';
-import { Pool } from 'backapirest';
+import { Pool } from 'pg';
 
 test('store test, update, select all, select by id test and delete it', async (done) => {
   const pool = new Pool(
