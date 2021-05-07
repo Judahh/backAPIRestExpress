@@ -1,7 +1,7 @@
 import express from 'express';
 
 import RouterSingleton from './router/routerSingleton';
-import { DatabaseHandler, DatabaseHandlerInitializer } from 'backapirest';
+import { DatabaseHandler, DatabaseHandlerInitializer } from 'backapi';
 
 export default class SimpleApp {
   express: express.Application;
