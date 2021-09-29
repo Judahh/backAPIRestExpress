@@ -1,7 +1,7 @@
 import express from 'express';
 
 import RouterSingleton from './router/routerSingleton';
-import { DatabaseHandler, DatabaseHandlerInitializer } from 'backapi';
+import { DatabaseHandler, IDatabaseHandler } from 'backapi';
 
 export default class SimpleApp {
   express: express.Application;
@@ -19,7 +19,7 @@ export default class SimpleApp {
     this.express.use(express.json());
   }
 
-  protected routes(initDefault?: DatabaseHandlerInitializer): void {
+  protected routes(initDefault?: IDatabaseHandler): void {
     this.router.createRoutes(initDefault);
     this.express.use(this.router.getRoutes());
   }
