@@ -2,7 +2,7 @@
 import { ServiceHandler } from '@flexiblepersistence/service';
 // import dBHandler from './dBHandler';
 
-import DBHandler from './dBHandler';
+import DBHandler, { write, read } from './dBHandler';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
@@ -10,7 +10,7 @@ import { mockResponse } from './response.mock';
 import { Request, Response } from 'express';
 import { DAOPersistence, Utils } from '@flexiblepersistence/dao';
 
-test('store test, update, select all, select by id test and delete it', async (done) => {
+test('store test, update, select all, select by id test and delete it', async () => {
   const pool = (
     (DBHandler.getReadHandler() as ServiceHandler).persistence as DAOPersistence
   ).getPool();
@@ -142,9 +142,11 @@ test('store test, update, select all, select by id test and delete it', async (d
     await handler?.getWrite()?.clear();
     await Utils.end(pool);
     expect(error).toBe(null);
-    done();
+    write.close();
+    read.close();
   }
   await handler?.getWrite()?.clear();
   await Utils.end(pool);
-  done();
+  write.close();
+  read.close();
 });
