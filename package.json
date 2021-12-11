@@ -2,7 +2,7 @@
   "name": "@backapirest/express",
   "productName": "backAPIRestExpress",
   "author": "Judah Holanda Correia Lima <judahholanda7@gmail.com> (https://judahh.com)",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": false,
   "description": "A simple API framework using Flexible Persistence",
   "main": "dist/source/index.js",
@@ -53,6 +53,8 @@
   },
   "devDependencies": {
     "sequelize": "latest",
+    "flexiblepersistence": "latest",
+    "@flexiblepersistence/service": "latest",
     "@flexiblepersistence/sequelize": "latest",
     "@flexiblepersistence/dao": "latest",
     "@types/jest": "latest",
