@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "journaly": "latest",
-    "pg": "latest",
+    "pg": "8.7.3",
     "backapi": "latest",
     "backapirest": "latest",
     "express": "latest"
