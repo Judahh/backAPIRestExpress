@@ -49,7 +49,7 @@
     "pg": "latest",
     "backapi": "latest",
     "backapirest": "latest",
-    "express": "latest"
+    "express": "4.17.3"
   },
   "devDependencies": {
     "sequelize": "latest",
