@@ -48,7 +48,7 @@
     "journaly": "latest",
     "pg": "latest",
     "backapi": "latest",
-    "backapirest": "latest",
+    "backapirest": "2.0.14",
     "express": "latest"
   },
   "devDependencies": {
