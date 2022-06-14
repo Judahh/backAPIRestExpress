@@ -32,4 +32,20 @@ export default class RouterSingleton {
   getRoutes(): Router {
     return this.routes;
   }
+
+  addRoute(route: string, handler: string): void {
+    const routes = this.routes;
+    const controller = this.controller?.[handler] as any;
+    if (controller !== undefined) {
+      if (controller.index)
+        routes.get(route, controller.index.bind(controller));
+      if (controller.create)
+        routes.get(route, controller.create.bind(controller));
+      if (controller.read) routes.get(route, controller.read.bind(controller));
+      if (controller.update)
+        routes.get(route, controller.update.bind(controller));
+      if (controller.delete)
+        routes.get(route, controller.delete.bind(controller));
+    }
+  }
 }
