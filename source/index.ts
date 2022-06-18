@@ -13,8 +13,10 @@ import {
 
 import SimpleApp from './simpleApp';
 import RouterSingleton from './router/routerSingleton';
+import request from './router/request';
 
 export {
+  request,
   SimpleApp,
   BaseController,
   BaseControllerDefault,
