@@ -29,6 +29,16 @@ export default class RouterSingleton {
     return this._instance;
   }
 
+  getController(
+    name?: string
+  ):
+    | { [name: string]: BaseControllerDefault }
+    | BaseControllerDefault
+    | undefined {
+    if (name !== undefined) return this.controller?.[name];
+    return this.controller;
+  }
+
   getRoutes(): Router {
     return this.routes;
   }
@@ -37,15 +47,31 @@ export default class RouterSingleton {
     const routes = this.routes;
     const controller = this.controller?.[handler] as any;
     if (controller !== undefined) {
-      if (controller.index)
-        routes.get(route, controller.index.bind(controller));
-      if (controller.create)
-        routes.get(route, controller.create.bind(controller));
-      if (controller.read) routes.get(route, controller.read.bind(controller));
-      if (controller.update)
-        routes.get(route, controller.update.bind(controller));
-      if (controller.delete)
-        routes.get(route, controller.delete.bind(controller));
+      const indexM = controller?.index?.bind(controller);
+      const showM = controller?.show?.bind(controller);
+      const createM = controller?.create?.bind(controller);
+      const readM = controller?.read?.bind(controller);
+      const updateM = controller?.update?.bind(controller);
+      const deleteM = controller?.delete?.bind(controller);
+      console.log(
+        'route',
+        route,
+        indexM,
+        showM,
+        createM,
+        readM,
+        updateM,
+        deleteM
+      );
+      if (indexM) routes.get(route, indexM);
+      if (showM) routes.get(route, showM);
+      if (createM) routes.post(route, createM);
+      if (readM) routes.get(route, readM);
+      if (updateM) {
+        routes.put(route, updateM);
+        routes.patch(route, updateM);
+      }
+      if (deleteM) routes.delete(route, deleteM);
     }
   }
 }

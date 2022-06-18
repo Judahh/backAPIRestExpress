@@ -2,6 +2,7 @@ import express from 'express';
 
 import RouterSingleton from './router/routerSingleton';
 import { DatabaseHandler, IDatabaseHandler } from 'backapi';
+import execute from './loader';
 
 export default class SimpleApp {
   express: express.Application;
@@ -19,8 +20,9 @@ export default class SimpleApp {
     this.express.use(express.json());
   }
 
-  protected routes(initDefault?: IDatabaseHandler): void {
+  protected async routes(initDefault?: IDatabaseHandler): Promise<void> {
     this.router.createRoutes(initDefault);
+    await execute(this.router);
     this.express.use(this.router.getRoutes());
   }
 }
