@@ -53,7 +53,7 @@ export default class RouterSingleton {
       const updateM = controller?.update?.bind(controller);
       const deleteM = controller?.delete?.bind(controller);
 
-      if (optionsM) routes.index(route, optionsM);
+      if (optionsM) routes.options(route, optionsM);
       if (createM) routes.post(route, createM);
       if (readM) routes.get(route, readM);
       if (updateM) {
