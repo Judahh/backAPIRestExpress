@@ -47,24 +47,13 @@ export default class RouterSingleton {
     const routes = this.routes;
     const controller = this.controller?.[handler] as any;
     if (controller !== undefined) {
-      const indexM = controller?.index?.bind(controller);
-      const showM = controller?.show?.bind(controller);
+      const optionsM = controller?.options?.bind(controller);
       const createM = controller?.create?.bind(controller);
       const readM = controller?.read?.bind(controller);
       const updateM = controller?.update?.bind(controller);
       const deleteM = controller?.delete?.bind(controller);
-      console.log(
-        'route',
-        route,
-        indexM,
-        showM,
-        createM,
-        readM,
-        updateM,
-        deleteM
-      );
-      if (indexM) routes.get(route, indexM);
-      if (showM) routes.get(route, showM);
+
+      if (optionsM) routes.index(route, optionsM);
       if (createM) routes.post(route, createM);
       if (readM) routes.get(route, readM);
       if (updateM) {

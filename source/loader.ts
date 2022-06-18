@@ -28,9 +28,9 @@ const readFolder = async (
           (file.includes('index') || file.includes('].ts')) &&
           handler !== undefined
         )
-          readFile(path, file, handler, router);
+          await readFile(path, file, handler, router);
         else if (!file.includes('.ts'))
-          readFolder(path + '/' + file, router, [root]);
+          await readFolder(path + '/' + file, router, [root]);
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
@@ -51,13 +51,11 @@ const readFile = async (
       ? file?.split('].ts')?.[0]?.split('[')?.[1]
       : undefined;
 
-  const route = path + (param !== undefined ? `:${param}` : '');
-
-  console.log('route', route, handler);
+  const route = '/' + path + (param !== undefined ? `:${param}` : '');
   router.addRoute(route, handler);
 };
 
 const execute = async (router) =>
-  readFolder('api', router, ['./src/pages', './source/pages']);
+  await readFolder('api', router, ['./src/pages', './source/pages']);
 
 export default execute;
