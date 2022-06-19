@@ -9,7 +9,8 @@
   "module": "dist/source/index.js",
   "types": "dist/source/index.d.ts",
   "bin": {
-    "back": "source/script/back.sh"
+    "back": "source/script/back.sh",
+    "simpleServer": "source/script/simpleServer.js"
   },
   "files": [
     "dist"

@@ -9,6 +9,7 @@ done
 
 dist="${npm_package_config_path_dist:-.}"
 server="${npm_package_config_path_server:-source/server.js}"
+file=$dist/$server
 
 echo "Starting server... (port: $port) (dist: $dist) (server: $server) (exec: $exec)"
 case $exec in
@@ -21,6 +22,9 @@ case $exec in
     ;;
 
   *)
-    node "$dist/$server"
-    ;;
+    if test -f "$file"; then
+        node $file
+    else
+        npm run simpleServer
+    fi;;
 esac

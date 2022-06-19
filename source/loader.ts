@@ -56,6 +56,12 @@ const readFile = async (
 };
 
 const execute = async (router) =>
-  await readFolder('api', router, ['./src/pages', './source/pages']);
+  await readFolder('api', router, [
+    '.',
+    './src',
+    './source',
+    './src/pages',
+    './source/pages',
+  ]);
 
 export default execute;
