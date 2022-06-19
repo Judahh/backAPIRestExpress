@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 while getopts p:db flag; do
   case "$flag" in
     p) port=$OPTARG ;;
@@ -10,26 +10,25 @@ done
 dist="${npm_package_config_path_dist:-.}"
 server="${npm_package_config_path_server:-source/server.js}"
 file=$dist/$server
-node="/usr/bin/node"
 
-echo "Starting server... (port: $port) (dist: $dist) (server: $server) (exec: $exec)"
+pwd=$(pwd)
+
 case $exec in
   "dev")
-    ./node_modules/nodemon/bin/nodemon.js -e ts --exec \"npm run build && npm run start\"
+    echo "Starting dev server"
+    (cd $pwd ; ./node_modules/nodemon/bin/nodemon.js -e ts --exec "npm run build && npm run start")
     ;;
 
   "build")
-    npm run build
+    echo "Starting build"
+    (cd $pwd ; npm run --prefix $pwd tsc)
     ;;
 
-  *)
+  "")
+    echo "Starting"
     if test -f "$file"; then
-        node $file
+      (node $file)
     else
-      if test -f "$node"; then
-        simpleServer
-      else
-        simpleServer2
-      fi
+      (node ./node_modules/@backapirest/express/script/simpleServer.mjs -f $pwd)
     fi;;
 esac
