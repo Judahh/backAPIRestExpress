@@ -16,3 +16,5 @@ temp.ts
 .yml
 !script/**/*
 !/script/**/*
+!/script/*
+!script/*
