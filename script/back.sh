@@ -13,6 +13,13 @@ file=$dist/$server
 
 pwd=$(pwd)
 
+cd $pwd;
+
+if [ -f ".env" ]; then
+    echo ".env exists."
+    export $(cat .env | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}' )
+fi
+
 case $exec in
   "dev")
     echo "Starting dev server"
