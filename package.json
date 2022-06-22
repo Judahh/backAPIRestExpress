@@ -2,14 +2,15 @@
   "name": "@backapirest/express",
   "productName": "backAPIRestExpress",
   "author": "Judah Holanda Correia Lima <judahholanda7@gmail.com> (https://judahh.com)",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "private": false,
   "description": "A simple API framework using Flexible Persistence",
   "main": "dist/source/index.js",
   "module": "dist/source/index.js",
   "types": "dist/source/index.d.ts",
   "bin": {
-    "backExpress": "script/back.sh"
+    "backExpress": "script/back.sh",
+    "backExpressStarter": "script/simpleServer.mjs"
   },
   "files": [
     "dist"
