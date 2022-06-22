@@ -3,6 +3,7 @@ import express from 'express';
 import RouterSingleton from './router/routerSingleton';
 import { DatabaseHandler } from 'backapi';
 import { SimpleApp as SA } from 'backapirest';
+import execute from './loader';
 
 import dotEnv from 'dotenv';
 
@@ -12,6 +13,6 @@ export default class SimpleApp extends SA {
   express: express.Application;
 
   constructor(router: RouterSingleton, databaseHandler: DatabaseHandler) {
-    super(router, databaseHandler, express);
+    super(router, databaseHandler, express, execute);
   }
 }
