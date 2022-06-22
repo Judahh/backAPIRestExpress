@@ -46,7 +46,7 @@ try {
     'dist/src/dBHandler.js',
     'src/dBHandler.js',
   ]).then((dBHandler) => {
-    sImport('../../../../', [
+    sImport('../../../..', [
       'dist/source/route/index.js',
       'source/route/index.js',
       'dist/src/route/index.js',
@@ -56,12 +56,13 @@ try {
       'dist/src/routes/index.js',
       'src/routes/index.js',
     ]).then((index) => {
-      console.log('dBHandler:', dBHandler);
-      console.log('index:', index);
-      new SimpleApp(
-        index.default.default.getInstance(),
-        dBHandler.default.default
-      );
+      const rIndex = index?.default?.default;
+      const instance = rIndex?.getInstance();
+      const handler = dBHandler?.default?.default;
+      console.log('index', rIndex);
+      console.log('instance', instance);
+      console.log('handler', handler);
+      new SimpleApp(instance, handler);
     });
   });
 } catch (error) {
