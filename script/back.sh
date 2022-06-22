@@ -13,23 +13,29 @@ file=$dist/$server
 
 pwd=$PWD
 
-cd "$pwd";
+cd "$pwd"
 
 if [ -f ".env" ]; then
-    echo ".env exists."
-    cat .env | grep -v '#' | grep PORT
-    export "$(cat .env | grep -v '#' | grep PORT)"
+  echo ".env exists."
+  cat .env | grep -v '#' | grep PORT
+  export "$(cat .env | grep -v '#' | grep PORT)"
 fi
 
 case $exec in
   "dev")
     echo "Starting dev server"
-    (cd "$pwd" ; ./node_modules/nodemon/bin/nodemon.js -e ts --exec "npm run build && npm run start")
+    (
+      cd "$pwd"
+      ./node_modules/nodemon/bin/nodemon.js -e ts --exec "npm run build && npm run start"
+    )
     ;;
 
   "build")
     echo "Starting build"
-    (cd "$pwd" ; npm run --prefix "$pwd" tsc)
+    (
+      cd "$pwd"
+      npm run --prefix "$pwd" tsc
+    )
     ;;
 
   "")
@@ -38,5 +44,6 @@ case $exec in
       (node "$file")
     else
       (node ./node_modules/@backapirest/express/script/simpleServer.mjs -f "$pwd")
-    fi;;
+    fi
+    ;;
 esac
