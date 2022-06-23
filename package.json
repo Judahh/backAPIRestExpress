@@ -2,7 +2,7 @@
   "name": "@backapirest/express",
   "productName": "backAPIRestExpress",
   "author": "Judah Holanda Correia Lima <judahholanda7@gmail.com> (https://judahh.com)",
-  "version": "2.0.20",
+  "version": "2.0.21",
   "private": false,
   "description": "A simple API framework using Flexible Persistence",
   "main": "dist/source/index.js",
