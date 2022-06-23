@@ -62,6 +62,11 @@ const execute = async (router) =>
     './source',
     './src/pages',
     './source/pages',
+    './dist',
+    './dist/src',
+    './dist/source',
+    './dist/src/pages',
+    './dist/source/pages',
   ]);
 
 export default execute;
