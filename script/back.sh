@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 while getopts p:db flag; do
   case "$flag" in
     p) port=$OPTARG ;;
