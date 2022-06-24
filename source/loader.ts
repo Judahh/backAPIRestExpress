@@ -26,10 +26,17 @@ const getHandlerName = async (path: PathLike): Promise<string> => {
   return handler;
 };
 
+const getRequestHandler = (file: string) => {
+  return file
+    .split(/request\)*\(/)[1]
+    .split(');')[0]
+    .split("'")[1];
+};
+
 const getHandler = async (path: PathLike, handler?: string) => {
-  if (handler !== undefined && handler !== null) {
+  if (path !== undefined && handler !== undefined && handler !== null) {
     let name = await readfil(path + '/' + handler, { encoding: 'utf8' });
-    name = name.split('request(')[1].split(');')[0].split("'")[1];
+    name = getRequestHandler(name);
     return name;
   }
   return undefined;
