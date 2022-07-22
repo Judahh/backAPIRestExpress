@@ -30,6 +30,7 @@ const sImport = async (root, paths) => {
 // new SimpleApp(index.default.getInstance(), dBHandler.default);
 
 const folderIndex = process.argv.indexOf('-f');
+const migrate = process.argv.indexOf('-m') > -1;
 let folder;
 if (folderIndex > -1) {
   // Retrieve the value after --custom
@@ -62,7 +63,8 @@ try {
       console.log('index', rIndex);
       console.log('instance', instance);
       console.log('handler', handler);
-      new SimpleApp(instance, handler);
+      const app = new SimpleApp(instance, handler, !migrate);
+      if (migrate) app.migrate();
     });
   });
 } catch (error) {

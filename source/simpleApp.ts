@@ -12,7 +12,11 @@ dotEnv.config();
 export default class SimpleApp extends SA {
   express: express.Application;
 
-  constructor(router: RouterSingleton, databaseHandler: DatabaseHandler) {
-    super(router, databaseHandler, express, execute);
+  constructor(
+    router: RouterSingleton,
+    databaseHandler: DatabaseHandler,
+    autoStart = true
+  ) {
+    super(router, databaseHandler, express, execute, autoStart);
   }
 }
