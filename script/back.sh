@@ -3,6 +3,7 @@ while getopts p:db flag; do
   case "$flag" in
     p) port=$OPTARG ;;
     d) exec="dev" ;;
+    m) exec="migrate" ;;
     b) exec="build" ;;
   esac
 done
@@ -31,6 +32,14 @@ case $exec in
     echo "Starting build"
     (cd $pwd ; npm run --prefix $pwd tsc)
     ;;
+
+  "migrate")
+    echo "Migrating"
+    if test -f "$file"; then
+      (node $file -m)
+    else
+      (node ./node_modules/@backapirest/express/script/simpleServer.mjs -f $pwd -m)
+    fi;;
 
   "")
     echo "Starting"
