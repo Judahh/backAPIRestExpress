@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-while getopts p:db flag; do
+while getopts p:dmb flag; do
   case "$flag" in
     p) port=$OPTARG ;;
     d) exec="dev" ;;
