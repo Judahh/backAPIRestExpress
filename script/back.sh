@@ -25,7 +25,7 @@ fi
 case $exec in
   "dev")
     echo "Starting dev server"
-    (cd $pwd ; ./node_modules/nodemon/bin/nodemon.js -e ts --exec "npm run build && npm run start")
+    (cd $pwd ; npm run build && npm run start)
     ;;
 
   "build")
