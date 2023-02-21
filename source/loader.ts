@@ -2,6 +2,10 @@ import { PathLike } from 'node:fs';
 import { readdir, readFile as readfil } from 'node:fs/promises';
 import RouterSingleton from './router/routerSingleton';
 
+const verbose = JSON.parse(
+  (process.env.BACK_API_REST_DEBUG || 'false').toLowerCase()
+);
+
 const isFile = (file: string): boolean => {
   return file.includes('.ts') || file.includes('.js');
 };
@@ -47,6 +51,8 @@ const readFolder = async (
   router: RouterSingleton,
   roots: PathLike[]
 ) => {
+  let read = false;
+  const errors: unknown[] = [];
   for (const root of roots) {
     const realPath = root !== undefined ? root + '/' + path : path;
     try {
@@ -61,10 +67,15 @@ const readFolder = async (
         else if (!isFile(file))
           await readFolder(path + '/' + file, router, [root]);
       }
+      read = true;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      console.error(error.message);
+    } catch (error: unknown) {
+      errors.push(error);
     }
+  }
+  if (!read && verbose) {
+    console.error('Error reading: ' + path);
+    console.error(errors);
   }
 };
 
