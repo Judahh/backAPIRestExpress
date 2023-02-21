@@ -15,16 +15,23 @@
 import { SimpleApp } from '@backapirest/express';
 import { chdir, cwd } from 'node:process';
 
+const verbose = JSON.parse(
+  (process.env.BACK_API_REST_DEBUG || 'false').toLowerCase()
+);
+
 const sImport = async (root, paths) => {
   const sImports = paths.map((path) => root + '/' + path);
+  const errors = [];
   for (const sImport of sImports) {
     try {
       const imported = await import(sImport);
       return imported;
     } catch (error) {
-      console.log(error);
+      errors.push(error);
     }
   }
+  console.error('No import found');
+  console.error(errors);
 };
 
 // new SimpleApp(index.default.getInstance(), dBHandler.default);
@@ -36,11 +43,11 @@ if (folderIndex > -1) {
   // Retrieve the value after --custom
   folder = process.argv[folderIndex + 1];
 }
-console.log('Folder:', `${folder}`);
+if (verbose) console.log('Folder:', `${folder}`);
 try {
   chdir(folder);
   global.__basedir = folder;
-  console.log('Changed directory to:', `${cwd()}`);
+  if (verbose) console.log('Changed directory to:', `${cwd()}`);
   sImport('../../../..', [
     'dist/source/dBHandler.js',
     'source/dBHandler.js',
@@ -60,13 +67,17 @@ try {
       const rIndex = index?.default?.default;
       const instance = rIndex?.getInstance();
       const handler = dBHandler?.default?.default;
-      console.log('index', rIndex);
-      console.log('instance', instance);
-      console.log('handler', handler);
+      if (
+        JSON.parse((process.env.BACK_API_REST_DEBUG || 'false').toLowerCase())
+      ) {
+        console.log('index', rIndex);
+        console.log('instance', instance);
+        console.log('handler', handler);
+      }
       const app = new SimpleApp(instance, handler, !migrate);
       if (migrate) app.migrate();
     });
   });
 } catch (error) {
-  console.log('Error changing directory:', `${error}`);
+  console.error('Error changing directory:', `${error}`);
 }
