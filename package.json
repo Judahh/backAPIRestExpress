@@ -54,6 +54,7 @@
     "dotenv": "latest",
     "express": "latest",
     "journaly": "latest",
+    "mysql2": "latest",
     "nodemon": "latest",
     "pg": "latest"
   },

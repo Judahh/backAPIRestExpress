@@ -58,6 +58,7 @@ class PersistenceHandler extends DatabaseHandler {
 const journaly = Journaly.newJournaly() as SenderReceiver<any>;
 const database = new SequelizePersistenceInfo(readInfo, journaly, {
   logging: false,
+  dialect: 'postgres',
 });
 const eventdatabase = new PersistenceInfo(eventInfo, journaly);
 
