@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
@@ -32,7 +32,7 @@ jobs:
           production: true
           branch: ${{ github.ref_name }}
       - name: Publish
-        if: contains(matrix.node-version, '14.x')
+        if: contains(matrix.node-version, '18.x')
         uses: judahh/npmPublish@main
         with:
           node_auth_token: ${{secrets.NODE_AUTH_TOKEN}}
