@@ -51,7 +51,7 @@
   "dependencies": {
     "backapi": "latest",
     "backapirest": "latest",
-    "dotenv": "latest",
+    "dotenv": "16.0.2",
     "express": "latest",
     "journaly": "latest",
     "mysql2": "latest",
