@@ -52,7 +52,7 @@
     "backapi": "latest",
     "backapirest": "latest",
     "dotenv": "latest",
-    "express": "latest",
+    "express": "4.19.2",
     "journaly": "latest",
     "mysql2": "latest",
     "nodemon": "latest",
